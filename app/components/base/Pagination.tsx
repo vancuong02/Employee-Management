@@ -1,5 +1,5 @@
 import { Fragment } from 'react/jsx-runtime'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react'
 import { Button } from './Button'
 
 interface PaginationProps {
@@ -48,16 +48,22 @@ export function Pagination({ currentPage, totalPages, limit, onPageChange, onLim
                     ))}
                 </select>
             </div>
-            {/* Nút Prev */}
-            <Button
-                variant='outline'
-                size='sm'
-                onClick={() => onPageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-            >
-                <ChevronLeft className='w-4 h-4' />
-                Previous
-            </Button>
+
+            <div className='flex items-center gap-1'>
+                {/* Nút First */}
+                <Button variant='outline' size='sm' onClick={() => onPageChange(1)} disabled={currentPage === 1}>
+                    <ChevronsLeft className='w-4 h-4' />
+                </Button>
+                {/* Nút Prev */}
+                <Button
+                    variant='outline'
+                    size='sm'
+                    onClick={() => onPageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                >
+                    <ChevronLeft className='w-4 h-4' />
+                </Button>
+            </div>
 
             {/* Các số trang */}
             <div className='flex items-center gap-1'>
@@ -79,16 +85,27 @@ export function Pagination({ currentPage, totalPages, limit, onPageChange, onLim
                 ))}
             </div>
 
-            {/* Nút Next */}
-            <Button
-                variant='outline'
-                size='sm'
-                onClick={() => onPageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-            >
-                Next
-                <ChevronRight className='w-4 h-4' />
-            </Button>
+            <div className='flex items-center gap-1'>
+                {/* Nút Next */}
+                <Button
+                    variant='outline'
+                    size='sm'
+                    onClick={() => onPageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                >
+                    <ChevronRight className='w-4 h-4' />
+                </Button>
+
+                {/* Nút Last */}
+                <Button
+                    variant='outline'
+                    size='sm'
+                    onClick={() => onPageChange(totalPages)}
+                    disabled={currentPage === totalPages}
+                >
+                    <ChevronsRight className='w-4 h-4' />
+                </Button>
+            </div>
         </div>
     )
 }

@@ -9,7 +9,7 @@ import FormDialog from './dialog/FormDialog'
 import ConfirmDialog from './dialog/ConfirmDialog'
 import EmployeeTable from './tables/EmployeeTable'
 
-const fakeEmployees: Employee[] = Array.from({ length: 8 }, (_, i) => {
+const fakeEmployees: Employee[] = Array.from({ length: 50 }, (_, i) => {
     const year = 1990 + i
     const month = (i % 12) + 1
     const day = (i % 28) + 1
