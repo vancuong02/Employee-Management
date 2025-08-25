@@ -68,6 +68,15 @@ const EmployeeTable: React.FC<TProps> = ({ employees, handleEdit, handleDelete, 
         updateUrl(1, newLimit)
     }
 
+    useEffect(() => {
+        // Nếu không còn dữ liệu ở trang hiện tại nhưng vẫn còn nhân viên ở trang trước
+        if (currentItems.length === 0 && currentPage > 1) {
+            const newPage = currentPage - 1
+            setCurrentPage(newPage)
+            updateUrl(newPage, limit)
+        }
+    }, [currentItems, currentPage, limit])
+
     // Tự động chuyển đến page chứa nó nếu cần
     useEffect(() => {
         if (!newEmployeeId) return
