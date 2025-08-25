@@ -73,9 +73,14 @@ const EmployeeTable: React.FC<TProps> = ({ employees, handleEdit, handleDelete, 
         if (!newEmployeeId) return
         const idx = sortedEmployees.findIndex((emp) => emp.id === newEmployeeId)
         if (idx === -1) return
-        const page = Math.floor(idx / DEFAULT_LIMIT) + 1
-        if (page !== currentPage) setCurrentPage(page)
-    }, [newEmployeeId, sortedEmployees, currentPage])
+        const page = Math.floor(idx / limit) + 1
+        console.log('psge', page)
+
+        if (page !== currentPage) {
+            setCurrentPage(page)
+            updateUrl(page, limit)
+        }
+    }, [newEmployeeId, sortedEmployees, currentPage, limit])
 
     return (
         <div className='flex flex-col gap-4'>
