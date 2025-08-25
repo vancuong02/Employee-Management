@@ -8,15 +8,16 @@ import { generateNumericId } from '~/utils'
 import FormDialog from './dialog/FormDialog'
 import ConfirmDialog from './dialog/ConfirmDialog'
 import EmployeeTable from './tables/EmployeeTable'
+import { names } from '~/constant'
 
-const fakeEmployees: Employee[] = Array.from({ length: 50 }, (_, i) => {
+const fakeEmployees: Employee[] = Array.from({ length: 60 }, (_, i) => {
     const year = 1990 + i
     const month = (i % 12) + 1
     const day = (i % 28) + 1
 
     return {
         id: generateNumericId() + i,
-        name: `Employee ${String.fromCharCode(65 + i)}`,
+        name: names[i],
         dob: `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`,
         gender: i % 2 === 0 ? 'Male' : 'Female',
         email: `employee${i + 1}@example.com`,
